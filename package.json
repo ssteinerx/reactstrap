@@ -1,16 +1,10 @@
 {
   "name": "reactstrap",
-<<<<<<< HEAD
-  "version": "3.9.2",
-  "description": "React Bootstrap 4 components compatible with React 0.14.x and 15.x",
-  "main": "lib/index.js",
-=======
   "version": "4.8.0",
   "description": "React Bootstrap 4 components",
   "main": "dist/reactstrap.cjs.js",
   "jsnext:main": "dist/reactstrap.es.js",
   "module": "dist/reactstrap.es.js",
->>>>>>> a2d4d9d3e2c3c374b31f93551ade7bc4b40ce6a6
   "scripts": {
     "report-coverage": "coveralls < ./coverage/lcov.info",
     "test": "BABEL_ENV=test react-scripts test --env=jsdom",
@@ -96,13 +90,6 @@
     "lodash.isfunction": "^3.0.8",
     "lodash.isobject": "^3.0.2",
     "lodash.tonumber": "^4.0.3",
-<<<<<<< HEAD
-    "tether": "^1.3.4",
-    "react": "^0.14.0 || ^15.0.0",
-    "react-addons-transition-group": "^0.14.0 || ^15.0.0",
-    "react-addons-css-transition-group": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
-=======
     "prop-types": "^15.5.8",
     "reactstrap-tether": "1.3.4"
   },
@@ -110,7 +97,6 @@
     "react": "^0.14.9 || ^15.3.0",
     "react-dom": "^0.14.9 || ^15.3.0",
     "react-transition-group": "^1.1.2"
->>>>>>> a2d4d9d3e2c3c374b31f93551ade7bc4b40ce6a6
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
