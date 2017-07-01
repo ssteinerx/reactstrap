@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
@@ -50,7 +51,7 @@ const Label = (props) => {
     disabled,
     size,
     for: htmlFor,
-    ...attributes,
+    ...attributes
   } = props;
 
   const colClasses = [];
@@ -78,7 +79,8 @@ const Label = (props) => {
     check && inline && disabled ? 'disabled' : false,
     size ? `col-form-label-${size}` : false,
     colClasses,
-    colClasses.length ? 'col-form-label' : false
+    colClasses.length ? 'col-form-label' : false,
+    !check && !colClasses.length ? 'form-control-label' : false
   ), cssModule);
 
   return (

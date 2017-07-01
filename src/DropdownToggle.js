@@ -1,10 +1,12 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 import Button from './Button';
 
 const propTypes = {
   caret: PropTypes.bool,
+  color: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
@@ -53,7 +55,7 @@ class DropdownToggle extends React.Component {
   }
 
   render() {
-    const { className, cssModule, caret, split, nav, tag, ...props } = this.props;
+    const { className, color, cssModule, caret, split, nav, tag, ...props } = this.props;
     const ariaLabel = props['aria-label'] || 'Toggle Dropdown';
     const classes = mapToCssModules(classNames(
       className,
@@ -73,6 +75,7 @@ class DropdownToggle extends React.Component {
       props.href = '#';
     } else if (!tag) {
       Tag = Button;
+      props.color = color;
     } else {
       Tag = tag;
     }

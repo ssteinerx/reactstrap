@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { mapToCssModules } from './utils';
+import { mapToCssModules, omit } from './utils';
 
 const propTypes = {
   children: PropTypes.node,
+  active: PropTypes.bool,
   disabled: PropTypes.bool,
   divider: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -11,6 +13,7 @@ const propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   cssModule: PropTypes.object,
+  toggle: PropTypes.bool
 };
 
 const contextTypes = {
@@ -18,7 +21,8 @@ const contextTypes = {
 };
 
 const defaultProps = {
-  tag: 'button'
+  tag: 'button',
+  toggle: true
 };
 
 class DropdownItem extends React.Component {
@@ -39,7 +43,9 @@ class DropdownItem extends React.Component {
       this.props.onClick(e);
     }
 
-    this.context.toggle();
+    if (this.props.toggle) {
+      this.context.toggle();
+    }
   }
 
   getTabIndex() {
@@ -58,13 +64,15 @@ class DropdownItem extends React.Component {
       divider,
       tag: Tag,
       header,
-      ...props } = this.props;
+      active,
+      ...props } = omit(this.props, ['toggle']);
 
     const classes = mapToCssModules(classNames(
       className,
       {
         disabled: props.disabled,
         'dropdown-item': !divider && !header,
+        active: active,
         'dropdown-header': header,
         'dropdown-divider': divider
       }
@@ -75,11 +83,14 @@ class DropdownItem extends React.Component {
         Tag = 'h6';
       } else if (divider) {
         Tag = 'div';
+      } else if (props.href) {
+        Tag = 'a';
       }
     }
 
     return (
       <Tag
+        type={(Tag === 'button' && (props.onClick || this.props.toggle)) ? 'button' : undefined}
         {...props}
         tabIndex={tabIndex}
         className={classes}
